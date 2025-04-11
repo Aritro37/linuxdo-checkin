@@ -52,6 +52,13 @@ class LinuxDoBrowser:
         self.page.fill("#login-account-name", USERNAME)
         time.sleep(2)
         self.page.fill("#login-account-password", PASSWORD)
+        time.sleep(10)
+        credential_picker = self.page.locator('#credential_picker_container')
+        credential_picker.evaluate(
+            """(element) => {
+                element.style.display = 'none';
+            }"""
+        )
         time.sleep(2)
         self.page.click("#login-button")
         time.sleep(10)
